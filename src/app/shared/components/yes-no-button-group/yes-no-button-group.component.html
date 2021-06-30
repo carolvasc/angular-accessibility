@@ -3,6 +3,7 @@
   <button
     role="radio"
     [attr.aria-checked]="value === options.YES"
+    [attr.tabindex]="value === options.YES || value === '' ? 0 : -1"
     class="button button-yes"
     [class.button-activated]="value === options.YES"
     type="button" 
@@ -13,6 +14,7 @@
   <button
     role="radio"
     [attr.aria-checked]="value === options.NO"
+    [attr.tabindex]="value === options.NO || value === '' ? 0 : -1"
     class="button button-no"
     [class.button-activated]="value === options.NO"
     type="button" 
