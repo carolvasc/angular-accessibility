@@ -5,6 +5,7 @@
   class="button-group">
   <label [attr.id]="id" class="label">{{ label }}</label>
   <button
+    appKmItem
     role="radio"
     [attr.aria-checked]="value === options.YES"
     [attr.tabindex]="value === options.YES || value === '' ? 0 : -1"
@@ -16,6 +17,7 @@
     Yes
   </button>
   <button
+    appKmItem
     role="radio"
     [attr.aria-checked]="value === options.NO"
     [attr.tabindex]="value === options.NO || value === '' ? 0 : -1"
