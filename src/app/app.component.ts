@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ModalRef, ModalService } from './shared/components/modal/services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,12 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
+  @ViewChild('modal') public modalTemplateRef: TemplateRef<any>;
   title = 'angular-accessibility';
   public form: FormGroup;
+  public modalRef: ModalRef;
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder, private modalService: ModalService) {
     this.form = formBuilder.group({
       yesNoAnswer: [{ value: 'yes', disabled: false }],
     });
@@ -18,5 +21,12 @@ export class AppComponent {
 
   public submit(): void {
     console.log(this.form.value);
+  }
+
+  public show(): void {
+    this.modalRef = this.modalService.open({
+      templateRef: this.modalTemplateRef,
+      title: 'User Details',
+    });
   }
 }
