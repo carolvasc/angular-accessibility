@@ -1,6 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ModalRef, ModalService } from './shared/components/modal/services/modal.service';
+import { ModalRef } from './shared/components/modal/models/modal-ref.model';
+import { ModalService } from './shared/components/modal/services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent {
   title = 'angular-accessibility';
   public form: FormGroup;
   public modalRef: ModalRef;
+  public info = false;
 
   constructor(formBuilder: FormBuilder, private modalService: ModalService) {
     this.form = formBuilder.group({
