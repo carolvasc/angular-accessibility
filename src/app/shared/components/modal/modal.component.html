@@ -5,7 +5,9 @@
   <div 
     appFocusTrap
     appFocusBack
-    class="modal-content" 
+    class="modal-content"
+    role="dialog" 
+    [attr.aria-label]="config.title"
     (click)="$event.stopPropagation()">
     <h1 class="modal-title">{{ config.title }}</h1>
     <ng-container *ngTemplateOutlet="config.templateRef"></ng-container>
