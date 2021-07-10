@@ -21,15 +21,39 @@
     <form [formGroup]="modalForm" (ngSubmit)="submitModal()">
       <div class="form-field">
         <label for="firstName">First Name</label>
-        <input id="firstName" formControlName="firstName" />
+        <input 
+          [attr.aria-invalid]="modalForm.get('firstName').invalid" 
+          id="firstName" 
+          formControlName="firstName" />
+        <span 
+          *ngIf="modalForm.get('firstName')?.errors?.required" class="validation-error"
+        >
+          First name is required
+        </span>
       </div>
       <div class="form-field">
         <label for="surname">Surname</label>
-        <input id="surname"  formControlName="surname"/>
+        <input 
+          [attr.aria-invalid]="modalForm.get('surname').invalid" 
+          id="surname"  
+          formControlName="surname"/>
+        <span 
+          *ngIf="modalForm.get('surname')?.errors?.required" class="validation-error"
+        >
+          Surname is required
+        </span>
       </div>
       <div class="form-field">
         <label for="age">Age</label>
-        <input id="age"  formControlName="age"/>
+        <input 
+          [attr.aria-invalid]="modalForm.get('age').invalid" 
+          id="age"  
+          formControlName="age"/>
+        <span 
+          *ngIf="modalForm.get('age')?.errors?.required" class="validation-error"
+        >
+          Age is required
+        </span>
       </div>
   
       <label for="info">Subscribe to news letter</label>
