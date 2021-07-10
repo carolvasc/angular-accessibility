@@ -34,8 +34,10 @@ export class AppComponent {
   }
 
   public submitModal(): void {
-    console.log(this.modalForm.value);
-    this.modalRef.close();
+    if (this.modalForm.valid) {
+      console.log(this.modalForm.value);
+      this.modalRef.close();
+    }
   }
 
   public show(): void {
