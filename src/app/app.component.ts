@@ -18,13 +18,13 @@ export class AppComponent {
 
   constructor(formBuilder: FormBuilder, private modalService: ModalService) {
     this.form = formBuilder.group({
-      yesNoAnswer: [{ value: 'yes', disabled: false }],
+      yesNoAnswer: [{ value: '', disabled: false }],
     });
 
     this.modalForm = formBuilder.group({
-      firstName: ['Carolina', Validators.required],
+      firstName: ['Carol', Validators.required],
       surname: ['', Validators.required],
-      age: ['', Validators.required],
+      email: ['', Validators.required],
       info: [false],
     });
   }
@@ -43,7 +43,7 @@ export class AppComponent {
   public show(): void {
     this.modalRef = this.modalService.open({
       templateRef: this.modalTemplateRef,
-      title: 'User Details',
+      title: 'Informações do usuário',
     });
   }
 }

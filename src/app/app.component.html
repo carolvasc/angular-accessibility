@@ -1,26 +1,35 @@
 <main>
-  <h1>Form</h1>
+  <h2>Radio Group</h2>
+  <p>Um <b>grupo de radio</b> é um conjunto de botões verificáveis, conhecidos como botões de <b>radio</b>, que não são mais do que um
+    dos botões verificado por vez. Algumas implementações podem inicializar o conjunto com todos os botões no
+    estado desmarcado para forçar o usuário a marcar um dos botões antes de passar de um determinado ponto no fluxo de
+    trabalho.</p>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <app-yes-no-button-group
       [appDisableControl]="false"
       formControlName="yesNoAnswer"
-      label="Are you good enough in Angular? "
+      label="Você sabe como esse componente deveria funcionar?"
     ></app-yes-no-button-group>
-    <button>Submit</button>
   </form>
 
-  <h1>Accessible Modal Component</h1>
-  <p>Welcome to the accessible modal testing page!</p>
-  <button 
-    type="button" 
-    (click)="show()">
-    Show Modal
-  </button>
+  <h2>Modal</h2>
+  <p>É uma <b>caixa de diálogo</b> sobreposta à janela principal ou à janela de diálogo. As janelas em uma caixa de
+    diálogo modal são inertes. Ou seja, os usuários não podem interagir com o conteúdo fora de uma janela de diálogo
+    ativa. O conteúdo inerte fora de um diálogo ativo normalmente é visualmente obscurecido ou esmaecido.</p>
+  <span
+    role="button"
+    tabindex="0"
+    (click)="show()"
+    (keydown.enter)="show()"
+    class="button button-primary"
+  >
+    Abrir Modal
+  </span>
 
   <ng-template #modal>
     <form [formGroup]="modalForm" (ngSubmit)="submitModal()">
       <div class="form-field">
-        <label for="firstName">First Name</label>
+        <label for="firstName">Nome</label>
         <input 
           [attr.aria-invalid]="modalForm.get('firstName').invalid" 
           id="firstName" 
@@ -28,11 +37,11 @@
         <span 
           *ngIf="modalForm.get('firstName')?.errors?.required" class="validation-error"
         >
-          First name is required
+          Primeiro nome é obrigatório
         </span>
       </div>
       <div class="form-field">
-        <label for="surname">Surname</label>
+        <label for="surname">Sobrenome</label>
         <input 
           [attr.aria-invalid]="modalForm.get('surname').invalid" 
           id="surname"  
@@ -40,38 +49,35 @@
         <span 
           *ngIf="modalForm.get('surname')?.errors?.required" class="validation-error"
         >
-          Surname is required
+          Sobrenome é obrigatório
         </span>
       </div>
       <div class="form-field">
-        <label for="age">Age</label>
+        <label for="email">Email</label>
         <input 
-          [attr.aria-invalid]="modalForm.get('age').invalid" 
-          id="age"  
-          formControlName="age"/>
+          [attr.aria-invalid]="modalForm.get('email').invalid" 
+          id="email"  
+          formControlName="email"/>
         <span 
-          *ngIf="modalForm.get('age')?.errors?.required" class="validation-error"
+          *ngIf="modalForm.get('email')?.errors?.required" class="validation-error"
         >
-          Age is required
+          Email é obrigatório
         </span>
       </div>
-  
-      <label for="info">Subscribe to news letter</label>
-      <input type="checkbox" id="info" (change)="info = !info" formControlName="info" />
-      <p [@fade] *ngIf="info">This is a placeholder for more information</p>
   
       <div class="button-group">
         <button
           [attr.aria-disabled]="modalForm.invalid"
+          [class.disabled]="modalForm.invalid"
           class="button button-primary"
           type="submit">
-          Submit
+          Enviar
         </button>
         <button
           class="button button-secondary"
           type="button"
           (click)="modalRef.close()">
-          Cancel
+          Cancelar
         </button>
       </div>
     </form>
